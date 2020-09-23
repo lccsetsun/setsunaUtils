@@ -17,11 +17,16 @@ import org.springframework.stereotype.Component;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 @Slf4j
 @Component
 public class CronXiaohuaUtils {
+    public static List<String> listSend = Arrays.asList("https://oapi.dingtalk.com/robot/send?access_token=28d27124f770d9e81bb4b4344fd1d74f88b0430cb111e90c8d63cef85a142483"
+            ,"https://oapi.dingtalk.com/robot/send?access_token=4e4f1ee80c86ec7035e1f763bb15c7e0efdcb3d25ab42d321e352a2fc9d6023d"
+    );
     public static String sendUrl = "https://oapi.dingtalk.com/robot/send?access_token=28d27124f770d9e81bb4b4344fd1d74f88b0430cb111e90c8d63cef85a142483";
     public static String gaoxUrl = "https://api.jisuapi.com/xiaohua/text?pagenum=1&pagesize=1&sort=rand&appkey=47ff67c189f9f311";
     public static String hitokoto_i_Url = "https://v1.hitokoto.cn?c=i"; // 诗词
@@ -34,40 +39,29 @@ public class CronXiaohuaUtils {
     public static DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static String English_url = "https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=";
 
-    @Scheduled(cron="0 0/30 * * * ?")
-    public void cronutils() throws ApiException {
-        LocalDateTime tme = LocalDateTime.now();
-        if(tme.getHour()>8 || tme.getHour()<23){
-            DingTalkClient client = new DefaultDingTalkClient(sendUrl);
-            OapiRobotSendRequest request = new OapiRobotSendRequest();
-            request.setMsgtype("markdown");
-            OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
-            String body = HttpUtil.createGet(gaoxUrl).execute().body();
-            JSONArray json= JSONObject.parseObject(body).getJSONObject("result").getJSONArray("list");
-            JSONObject bodyJSON = JSONObject.parseObject(json.get(0).toString());
-            markdown.setTitle("亲爱的，记得喝水哦！走动一下");
-            markdown.setText("## 夕阳提醒你！记得喝水水 \n  #### 每刻一笑 \n >"+bodyJSON.get("content"));
-            request.setMarkdown(markdown);
-            OapiRobotSendResponse response = client.execute(request);
-        }
-    }
-
-    @Scheduled(cron="0 20 * * * ?")
+    @Scheduled(cron="* * 4 * * ?")
     public void hitokoto() throws ApiException {
         LocalDateTime tme = LocalDateTime.now();
         if(tme.getHour()>8 && tme.getHour()<23){
-            DingTalkClient client = new DefaultDingTalkClient(sendUrl);
-            OapiRobotSendRequest request = new OapiRobotSendRequest();
-            request.setMsgtype("markdown");
-            OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
-            markdown.setTitle("夕阳的每刻推送");
-            String strBody = hitokotoUtils();
-            log.info(strBody);
-            if (StringUtils.isNotBlank(strBody)){
-                markdown.setText("### 每刻推送  \n ##### 提醒一下，记得喝水哦！！！\n "+strBody);
-                request.setMarkdown(markdown);
-                OapiRobotSendResponse response = client.execute(request);
-            }
+            listSend.stream().forEach(sendUrl->{
+                DingTalkClient client = new DefaultDingTalkClient(sendUrl);
+                OapiRobotSendRequest request = new OapiRobotSendRequest();
+                request.setMsgtype("markdown");
+                OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
+                markdown.setTitle("夕阳的每刻推送");
+                String strBody = hitokotoUtils();
+                log.info(strBody);
+                if (StringUtils.isNotBlank(strBody)){
+                    markdown.setText("### 每刻推送  \n ##### 提醒一下，记得喝水哦！！！\n "+strBody);
+                    request.setMarkdown(markdown);
+                    try {
+                        OapiRobotSendResponse response = client.execute(request);
+                    } catch (ApiException e) {
+                        e.printStackTrace();
+                        log.error(e.getErrMsg());
+                    }
+                }
+            });
         }
     }
 

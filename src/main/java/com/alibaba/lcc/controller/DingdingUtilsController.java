@@ -27,7 +27,7 @@ import java.util.Arrays;
 @RequestMapping("/ding")
 public class DingdingUtilsController {
 
-    public static String sendUrl = "https://oapi.dingtalk.com/robot/send?access_token=28d27124f770d9e81bb4b4344fd1d74f88b0430cb111e90c8d63cef85a142483";
+    public static String sendUrl = "https://oapi.dingtalk.com/robot/send?access_token=4e4f1ee80c86ec7035e1f763bb15c7e0efdcb3d25ab42d321e352a2fc9d6023d";
     public static String gaoxUrl = "https://api.jisuapi.com/xiaohua/text?pagenum=1&pagesize=1&sort=rand&appkey=47ff67c189f9f311";
     @PostMapping("send")
     public Resp getOrgRootNodeAppointReturn() throws ApiException {
@@ -35,6 +35,9 @@ public class DingdingUtilsController {
             DingTalkClient client = new DefaultDingTalkClient(sendUrl);
             OapiRobotSendRequest request = new OapiRobotSendRequest();
             request.setMsgtype("markdown");
+            OapiRobotSendRequest.At s =  new OapiRobotSendRequest.At();
+            s.setIsAtAll(true);
+            request.setAt(s);
             OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
             String strBody = CronXiaohuaUtils.hitokotoUtils();
             markdown.setTitle("夕阳的每刻推送");
