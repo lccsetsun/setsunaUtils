@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 @Slf4j
 @Component
@@ -31,7 +32,7 @@ public class CronXiaohuaUtils {
     public static String hitokoto_h_Url = "https://v1.hitokoto.cn?c=i"; // 影视
     public static String hitokoto_k_Url = "https://v1.hitokoto.cn?c=i"; // 哲学
     public static DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static String English_url = "https://apiv3.shanbay.com/weapps/dailyquote/quote/?date="+dtf2.format(LocalDateTime.now());
+    public static String English_url = "https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=";
 
     @Scheduled(cron="0 0/30 * * * ?")
     public void cronutils() throws ApiException {
@@ -73,7 +74,9 @@ public class CronXiaohuaUtils {
 
     public static String hitokotoUtils() {
         StringBuffer str = new StringBuffer();
-        String English = HttpUtil.createGet(English_url).execute().body();
+        Random r = new Random();
+        LocalDateTime now = LocalDateTime.now();
+        String English = HttpUtil.createGet(English_url+dtf2.format(now.plusDays(-(r.nextInt(300))))).execute().body();
         JSONObject cont = JSONObject.parseObject(English);
         String translation = cont.getString("translation");
         String content = cont.getString("content");
@@ -97,7 +100,7 @@ public class CronXiaohuaUtils {
     }
 
 
-//    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) throws UnsupportedEncodingException {
       /*  DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String url = "https://apiv3.shanbay.com/weapps/dailyquote/quote/?date="+dtf2.format(LocalDateTime.now());
         String body = HttpUtil.createGet(English_url).execute().body();
@@ -112,6 +115,11 @@ public class CronXiaohuaUtils {
       */
 //        JSONObject hitokoto_i = JSONObject.parseObject(HttpUtil.createGet(hitokoto_i_Url).execute().body());
 //        log.info(hitokoto_i.toJSONString());
-//    }
+        Random r = new Random();
+        LocalDateTime now = LocalDateTime.now();
+//        now.plusDays(r.nextInt(500));
+
+        log.info(dtf2.format(now.plusDays(-(r.nextInt(300)))));
+    }
 
 }
