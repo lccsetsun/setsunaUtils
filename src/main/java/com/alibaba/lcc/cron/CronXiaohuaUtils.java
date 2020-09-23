@@ -70,6 +70,7 @@ public class CronXiaohuaUtils {
         }
     }
 
+
     public static String hitokotoUtils() {
         StringBuffer str = new StringBuffer();
         String English = HttpUtil.createGet(English_url).execute().body();
