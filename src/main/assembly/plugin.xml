@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<assembly>
+    <id>plugin</id>
+
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <outputDirectory>/client_lcc/conf</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/conf</directory>
+            <outputDirectory>/client_lcc/conf</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/bin</directory>
+            <outputDirectory>/client_lcc/bin</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/target/client_lcc-*.jar</directory>
+            <outputDirectory>/client_lcc/lib</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>/client_lcc/lib</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+
+</assembly>

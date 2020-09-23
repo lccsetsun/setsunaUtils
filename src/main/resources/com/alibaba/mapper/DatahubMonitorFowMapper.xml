@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.lcc.mapper.DatahubMonitorFowMapper" >
+  <resultMap id="BaseResultMap" type="com.alibaba.lcc.model.model.DatahubMonitorFow" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="topicName" property="topicname" jdbcType="VARCHAR" />
+    <result column="projectNe" property="projectne" jdbcType="VARCHAR" />
+    <result column="inFlow" property="inflow" jdbcType="DOUBLE" />
+    <result column="inRps" property="inrps" jdbcType="DOUBLE" />
+    <result column="inTps" property="intps" jdbcType="DOUBLE" />
+    <result column="outFlow" property="outflow" jdbcType="DOUBLE" />
+    <result column="outRps" property="outrps" jdbcType="DOUBLE" />
+    <result column="outTps" property="outtps" jdbcType="DOUBLE" />
+    <result column="updateTime" property="updatetime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, topicName, projectNe, inFlow, inRps, inTps, outFlow, outRps, outTps, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from datahub_monitor_fow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectInflow" resultType="com.alibaba.lcc.model.po.DatahubMonitorFowVO">
+    SELECT
+	topicName,
+	projectNe,
+	inFlow,
+	outFlow,
+	updateTime
+    FROM
+        datahub_monitor_fow
+    WHERE
+        updateTime > SUBDATE( now( ), INTERVAL 10 MINUTE )
+            AND inFlow > 0
+            AND outFlow > 0
+    GROUP BY
+        topicName
+    ORDER BY
+        inFlow DESC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from datahub_monitor_fow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.alibaba.lcc.model.model.DatahubMonitorFow" >
+    insert into datahub_monitor_fow (id, topicName, projectNe, 
+      inFlow, inRps, inTps, 
+      outFlow, outRps, outTps, 
+      updateTime)
+    values (#{id,jdbcType=BIGINT}, #{topicname,jdbcType=VARCHAR}, #{projectne,jdbcType=VARCHAR}, 
+      #{inflow,jdbcType=DOUBLE}, #{inrps,jdbcType=DOUBLE}, #{intps,jdbcType=DOUBLE}, 
+      #{outflow,jdbcType=DOUBLE}, #{outrps,jdbcType=DOUBLE}, #{outtps,jdbcType=DOUBLE}, 
+      #{updatetime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alibaba.lcc.model.model.DatahubMonitorFow" >
+    insert into datahub_monitor_fow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="topicname != null" >
+        topicName,
+      </if>
+      <if test="projectne != null" >
+        projectNe,
+      </if>
+      <if test="inflow != null" >
+        inFlow,
+      </if>
+      <if test="inrps != null" >
+        inRps,
+      </if>
+      <if test="intps != null" >
+        inTps,
+      </if>
+      <if test="outflow != null" >
+        outFlow,
+      </if>
+      <if test="outrps != null" >
+        outRps,
+      </if>
+      <if test="outtps != null" >
+        outTps,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="topicname != null" >
+        #{topicname,jdbcType=VARCHAR},
+      </if>
+      <if test="projectne != null" >
+        #{projectne,jdbcType=VARCHAR},
+      </if>
+      <if test="inflow != null" >
+        #{inflow,jdbcType=DOUBLE},
+      </if>
+      <if test="inrps != null" >
+        #{inrps,jdbcType=DOUBLE},
+      </if>
+      <if test="intps != null" >
+        #{intps,jdbcType=DOUBLE},
+      </if>
+      <if test="outflow != null" >
+        #{outflow,jdbcType=DOUBLE},
+      </if>
+      <if test="outrps != null" >
+        #{outrps,jdbcType=DOUBLE},
+      </if>
+      <if test="outtps != null" >
+        #{outtps,jdbcType=DOUBLE},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alibaba.lcc.model.model.DatahubMonitorFow" >
+    update datahub_monitor_fow
+    <set >
+      <if test="topicname != null" >
+        topicName = #{topicname,jdbcType=VARCHAR},
+      </if>
+      <if test="projectne != null" >
+        projectNe = #{projectne,jdbcType=VARCHAR},
+      </if>
+      <if test="inflow != null" >
+        inFlow = #{inflow,jdbcType=DOUBLE},
+      </if>
+      <if test="inrps != null" >
+        inRps = #{inrps,jdbcType=DOUBLE},
+      </if>
+      <if test="intps != null" >
+        inTps = #{intps,jdbcType=DOUBLE},
+      </if>
+      <if test="outflow != null" >
+        outFlow = #{outflow,jdbcType=DOUBLE},
+      </if>
+      <if test="outrps != null" >
+        outRps = #{outrps,jdbcType=DOUBLE},
+      </if>
+      <if test="outtps != null" >
+        outTps = #{outtps,jdbcType=DOUBLE},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alibaba.lcc.model.model.DatahubMonitorFow" >
+    update datahub_monitor_fow
+    set topicName = #{topicname,jdbcType=VARCHAR},
+      projectNe = #{projectne,jdbcType=VARCHAR},
+      inFlow = #{inflow,jdbcType=DOUBLE},
+      inRps = #{inrps,jdbcType=DOUBLE},
+      inTps = #{intps,jdbcType=DOUBLE},
+      outFlow = #{outflow,jdbcType=DOUBLE},
+      outRps = #{outrps,jdbcType=DOUBLE},
+      outTps = #{outtps,jdbcType=DOUBLE},
+      updateTime = #{updatetime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,46 @@
+2020-09-22 16:40:46.228 [main] INFO  com.alibaba.lcc.AlibabaApplication - Starting AlibabaApplication on lccsetsundeMBP with PID 1010 (/Users/lccsetsun/IdeaProjects/utilsLcc/target/classes started by lccsetsun in /Users/lccsetsun/IdeaProjects/utilsLcc)
+2020-09-22 16:40:46.229 [main] INFO  com.alibaba.lcc.AlibabaApplication - The following profiles are active: dev
+2020-09-22 16:40:46.313 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.6.Final
+2020-09-22 16:40:46.350 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@459e9125: startup date [Tue Sep 22 16:40:46 CST 2020]; root of context hierarchy
+2020-09-22 16:40:47.056 [main] INFO  o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8072 (http)
+2020-09-22 16:40:47.061 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-09-22 16:40:47.061 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.27
+2020-09-22 16:40:47.111 [localhost-startStop-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-09-22 16:40:47.111 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 761 ms
+2020-09-22 16:40:47.224 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2020-09-22 16:40:47.225 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'statViewServlet' to [/druid/*]
+2020-09-22 16:40:47.226 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-09-22 16:40:47.227 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-09-22 16:40:47.227 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-09-22 16:40:47.227 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2020-09-22 16:40:47.227 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2020-09-22 16:40:47.771 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@459e9125: startup date [Tue Sep 22 16:40:46 CST 2020]; root of context hierarchy
+2020-09-22 16:40:47.800 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/d/getCount]}" onto public com.alibaba.lcc.model.resp.Resp com.alibaba.lcc.controller.BaseController.downloadData()
+2020-09-22 16:40:47.801 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/d/downZIP],methods=[POST]}" onto public java.lang.String com.alibaba.lcc.controller.BaseController.downloadZIP(javax.servlet.http.HttpServletResponse,java.lang.String)
+2020-09-22 16:40:47.803 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/ding/send],methods=[POST]}" onto public com.alibaba.lcc.model.resp.Resp com.alibaba.lcc.controller.DingdingUtilsController.getOrgRootNodeAppointReturn() throws com.taobao.api.ApiException
+2020-09-22 16:40:47.803 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/track/download],methods=[GET]}" onto public com.alibaba.lcc.model.resp.Resp com.alibaba.lcc.controller.ExportTrack.ExportTrack()
+2020-09-22 16:40:47.805 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-09-22 16:40:47.805 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2020-09-22 16:40:47.822 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-09-22 16:40:47.822 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-09-22 16:40:47.845 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-09-22 16:40:48.126 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2020-09-22 16:40:48.127 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Bean with name 'statFilter' has been autodetected for JMX exposure
+2020-09-22 16:40:48.128 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Bean with name 'dataSource' has been autodetected for JMX exposure
+2020-09-22 16:40:48.131 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2020-09-22 16:40:48.132 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2020-09-22 16:40:48.134 [main] INFO  o.s.context.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+2020-09-22 16:40:48.138 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2020-09-22 16:40:48.144 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8072"]
+2020-09-22 16:40:48.149 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8072"]
+2020-09-22 16:40:48.164 [main] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2020-09-22 16:40:48.172 [main] INFO  o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8072 (http)
+2020-09-22 16:40:48.175 [main] INFO  com.alibaba.lcc.AlibabaApplication - Started AlibabaApplication in 2.157 seconds (JVM running for 3.662)
+2020-09-22 16:40:49.005 [pool-2-thread-1] INFO  com.alibaba.lcc.cron.CronXiaohuaUtils - ====
+2020-09-22 16:40:50.004 [pool-2-thread-1] INFO  com.alibaba.lcc.cron.CronXiaohuaUtils - ====
+2020-09-22 16:40:51.003 [pool-2-thread-1] INFO  com.alibaba.lcc.cron.CronXiaohuaUtils - ====
+2020-09-22 16:40:52.005 [pool-2-thread-1] INFO  com.alibaba.lcc.cron.CronXiaohuaUtils - ====
+2020-09-22 16:40:52.931 [Thread-8] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@459e9125: startup date [Tue Sep 22 16:40:46 CST 2020]; root of context hierarchy
+2020-09-22 16:40:52.933 [Thread-8] INFO  o.s.context.support.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2020-09-22 16:40:52.934 [Thread-8] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2020-09-22 16:40:52.934 [Thread-8] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans
