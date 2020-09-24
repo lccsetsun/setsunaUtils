@@ -11,6 +11,7 @@ import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.taobao.api.ApiException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +30,7 @@ public class DingdingUtilsController {
 
     public static String sendUrl = "https://oapi.dingtalk.com/robot/send?access_token=4e4f1ee80c86ec7035e1f763bb15c7e0efdcb3d25ab42d321e352a2fc9d6023d";
     public static String gaoxUrl = "https://api.jisuapi.com/xiaohua/text?pagenum=1&pagesize=1&sort=rand&appkey=47ff67c189f9f311";
-    @PostMapping("send")
+    @GetMapping("send")
     public Resp getOrgRootNodeAppointReturn() throws ApiException {
 
             DingTalkClient client = new DefaultDingTalkClient(sendUrl);

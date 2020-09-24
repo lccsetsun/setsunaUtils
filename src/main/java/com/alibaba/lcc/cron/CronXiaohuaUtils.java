@@ -14,7 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -38,8 +37,10 @@ public class CronXiaohuaUtils {
     public static String hitokoto_k_Url = "https://v1.hitokoto.cn?c=i"; // 哲学
     public static DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static String English_url = "https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=";
+    public static String jisuapi_news_url = "https://api.jisuapi.com/news/get?channel=%E5%A4%B4%E6%9D%A1&start=0&num=10&appkey=47ff67c189f9f311";
 
-    @Scheduled(cron="* * 4 * * ?")
+
+    @Scheduled(cron="0/4 * 11,16 * * ?")
     public void hitokoto() throws ApiException {
         LocalDateTime tme = LocalDateTime.now();
         if(tme.getHour()>8 && tme.getHour()<23){
@@ -52,7 +53,7 @@ public class CronXiaohuaUtils {
                 String strBody = hitokotoUtils();
                 log.info(strBody);
                 if (StringUtils.isNotBlank(strBody)){
-                    markdown.setText("### 每刻推送  \n ##### 提醒一下，记得喝水哦！！！\n "+strBody);
+                    markdown.setText("### 每日推送  \n ##### 提醒一下，记得喝水哦！！！\n "+strBody);
                     request.setMarkdown(markdown);
                     try {
                         OapiRobotSendResponse response = client.execute(request);
@@ -90,12 +91,32 @@ public class CronXiaohuaUtils {
         str.append("> ### 影视 \n  "+"``` \n "+hitokoto_h.getString("hitokoto")+"\n       "+hitokoto_h.getString("from")+" \n ``` \n");
         JSONObject hitokoto_k = JSONObject.parseObject(HttpUtil.createGet(hitokoto_k_Url).execute().body());
         str.append("> ### 哲学 \n  "+"``` \n "+hitokoto_k.getString("hitokoto")+" \n       "+hitokoto_k.getString("from")+" \n ``` \n");
+        JSONObject jisuapi_news = JSONObject.parseObject(HttpUtil.createGet(jisuapi_news_url).execute().body());
+        JSONArray array = jisuapi_news.getObject("result",JSONObject.class).getJSONArray("list");
+        str.append("> ### 今日头条 \n ");
+        array.forEach(strnews->{
+            // url  title
+            JSONObject json = JSONObject.parseObject(strnews.toString());
+            str.append("> * ["+json.getString("title") +"]("+ json.getString("url")+") \n");
+        });
         return str.toString();
     }
 
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
-      /*  DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//    public static void main(String[] args) throws UnsupportedEncodingException {
+////        getHitokoto();
+////        String jisuapi_news_url = "https://api.jisuapi.com/news/get?channel=%E5%A4%B4%E6%9D%A1&start=0&num=1&appkey=47ff67c189f9f311";
+//        JSONObject jisuapi_news = JSONObject.parseObject(HttpUtil.createGet(jisuapi_news_url).execute().body());
+//        JSONArray array = jisuapi_news.getObject("result",JSONObject.class).getJSONArray("list");
+//        array.forEach(str->{
+//            // url  title
+//            JSONObject json = JSONObject.parseObject(str.toString());
+//            log.info("> * ["+json.getString("title") +"]("+ json.getString("url")+") \n");
+//        });
+//    }
+
+    private static void getHitokoto() {
+         /*  DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String url = "https://apiv3.shanbay.com/weapps/dailyquote/quote/?date="+dtf2.format(LocalDateTime.now());
         String body = HttpUtil.createGet(English_url).execute().body();
         JSONObject cont = JSONObject.parseObject(body);
@@ -114,6 +135,7 @@ public class CronXiaohuaUtils {
 //        now.plusDays(r.nextInt(500));
 
         log.info(dtf2.format(now.plusDays(-(r.nextInt(300)))));
+
     }
 
 }
