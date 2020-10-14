@@ -40,8 +40,9 @@ public class CronXiaohuaUtils {
     public static String jisuapi_news_url = "https://api.jisuapi.com/news/get?channel=%E5%A4%B4%E6%9D%A1&start=0&num=10&appkey=47ff67c189f9f311";
 
 
-    @Scheduled(cron="0/4 * 11,16 * * ?")
+    @Scheduled(cron="1 40 11,17 * * ?")
     public void hitokoto() throws ApiException {
+//        log.info("=========");
         LocalDateTime tme = LocalDateTime.now();
         if(tme.getHour()>8 && tme.getHour()<23){
             listSend.stream().forEach(sendUrl->{

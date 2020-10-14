@@ -1,0 +1,76 @@
+package ${package.Controller};
+
+
+import ${package.Entity}.${table.entityName};
+import ${package.Service}.${table.serviceName};
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import cn.com.citydo.starter.web.exception.Resp;
+
+
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+/**
+ * $!{table.comment}
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("/api#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    @Autowired
+    private ${table.serviceName} $!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}Service;
+
+    @GetMapping("/{id}")
+    public Resp<${table.entityName}> get(@PathVariable Long id) {
+        return Resp.success($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}Service.getById(id));
+    }
+
+    @GetMapping
+    public Resp<IPage<${table.entityName}>> page(${table.entityName} $!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}, Integer pageNo,Integer pageSize) {
+        IPage<${table.entityName}> page = new Page<>(pageNo, pageSize);
+        return Resp.success($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}Service.page(page, new QueryWrapper<>($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)})));
+    }
+
+    @PostMapping
+    public Resp<String> create(${table.entityName} $!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}) {
+        return Resp.success($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}Service.save($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}));
+    }
+
+    @PutMapping
+    public Resp<String> update(@Validated() ${table.entityName} $!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}) {
+        return Resp.success($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}Service.updateById($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}));
+    }
+
+    @DeleteMapping("/{id}")
+    public Resp<String> delete(@PathVariable Long id) {
+        return Resp.success($!{table.entityName.substring(0, 1).toLowerCase()}$!{table.entityName.substring(1)}Service.removeById(id));
+    }
+}
+#end
