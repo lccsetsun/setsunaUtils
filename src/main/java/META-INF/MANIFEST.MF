@@ -1,0 +1,53 @@
+Manifest-Version: 1.0
+Main-Class:
+Premain-Class: com.alibaba.lcc.agent.agentDemo
+Class-Path: mail-1.4.7.jar dom4j-1.6.1.jar spring-messaging-4.3.14.RELEA
+ SE.jar ant-1.8.1.jar guava-18.0.jar commons-codec-1.10.jar jackson-data
+ bind-2.8.10.jar tomcat-embed-el-8.5.27.jar tomcat-embed-websocket-8.5.2
+ 7.jar mybatis-spring-boot-starter-1.3.1.jar mybatis-plus-annotation-3.2
+ .0.jar spring-boot-starter-websocket-1.5.10.RELEASE.jar commons-pool2-2
+ .4.3.jar tomcat-jdbc-8.5.27.jar tomcat-juli-8.5.27.jar jackson-core-asl
+ -1.9.13.jar spring-boot-1.5.10.RELEASE.jar mybatis-spring-boot-autoconf
+ igure-1.3.1.jar spring-oxm-4.3.14.RELEASE.jar snakeyaml-1.17.jar aliyun
+ -sdk-datahub-2.3.0-public.jar jul-to-slf4j-1.7.25.jar stax-api-1.0.1.ja
+ r spring-boot-autoconfigure-1.5.10.RELEASE.jar spring-boot-starter-data
+ -redis-1.5.10.RELEASE.jar hibernate-validator-5.3.6.Final.jar spring-bo
+ ot-starter-tomcat-1.5.10.RELEASE.jar mysql-connector-java-8.0.21.jar jc
+ l-over-slf4j-1.7.25.jar commons-io-2.4.jar commons-collections-3.2.2.ja
+ r jcabi-aspects-0.20.1.jar spring-jdbc-4.3.14.RELEASE.jar druid-1.1.4.j
+ ar jackson-annotations-2.8.0.jar groovy-2.4.13.jar mybatis-plus-core-3.
+ 2.0.jar spring-tx-4.3.14.RELEASE.jar javacsv-2.0.jar quartz-2.2.3.jar p
+ oi-ooxml-schemas-3.9.jar mybatis-plus-boot-starter-3.2.0.jar spring-bea
+ ns-4.3.14.RELEASE.jar fastjson-1.2.54.jar spring-jms-4.3.14.RELEASE.jar
+  protobuf-java-3.11.4.jar citydo-starter-mybatis-plus-0.0.5.jar activem
+ q-broker-5.14.5.jar commons-lang-2.5.jar spring-data-commons-1.13.10.RE
+ LEASE.jar spring-aop-4.3.14.RELEASE.jar commons-logging-1.1.1.jar jcons
+ ole.jar odps-sdk-core-0.26.2-public.jar c3p0-0.9.1.1.jar jsqlparser-2.1
+ .jar validation-api-1.1.0.Final.jar spring-boot-starter-jdbc-1.5.10.REL
+ EASE.jar hawtbuf-1.11.jar hutool-all-5.3.10.jar citydo-starter-const-0.
+ 0.1.jar jackson-core-2.8.10.jar spring-webmvc-4.3.14.RELEASE.jar mybati
+ s-plus-generator-3.2.0.jar ant-launcher-1.8.1.jar xercesImpl-2.8.1.jar 
+ xmpcore-5.1.2.jar snappy-java-1.1.1.6.jar mybatis-spring-1.3.1.jar spri
+ ng-context-support-4.3.14.RELEASE.jar spring-data-redis-1.8.10.RELEASE.
+ jar poi-3.9.jar jackson-mapper-asl-1.9.13.jar spring-web-4.3.14.RELEASE
+ .jar jcabi-log-0.15.jar spring-boot-starter-aop-1.5.10.RELEASE.jar aspe
+ ctjweaver-1.8.0.jar lombok-1.16.20.jar metadata-extractor-2.6.2.jar spr
+ ing-context-4.3.14.RELEASE.jar aspectjrt-1.8.13.jar poi-ooxml-3.9.jar t
+ ools.jar logback-classic-1.1.11.jar jms-1.1.jar slf4j-api-1.7.25.jar am
+ qp-client-3.6.5.jar httpclient-4.5.5.jar lz4-1.3.0.jar druid-spring-boo
+ t-starter-1.1.4.jar citydo-starter-utils-0.0.1.jar log4j-1.2.15.jar com
+ mons-lang3-3.3.2.jar mybatis-plus-extension-3.2.0.jar xmlbeans-2.3.0.ja
+ r tomcat-annotations-api-8.5.27.jar activation-1.1.jar geronimo-jms_1.1
+ _spec-1.1.1.jar spring-core-4.3.14.RELEASE.jar velocity-1.7.jar classma
+ te-1.3.4.jar httpcore-4.4.9.jar gson-2.8.2.jar spring-boot-starter-1.5.
+ 10.RELEASE.jar geronimo-j2ee-management_1.1_spec-1.0.1.jar xml-apis-1.4
+ .01.jar log4j-over-slf4j-1.7.25.jar jboss-logging-3.3.1.Final.jar sprin
+ g-websocket-4.3.14.RELEASE.jar spring-boot-starter-web-1.5.10.RELEASE.j
+ ar activemq-openwire-legacy-5.14.5.jar spring-expression-4.3.14.RELEASE
+ .jar mybatis-plus-3.2.0.jar mybatis-3.4.5.jar odps-sdk-commons-0.26.2-p
+ ublic.jar spring-data-keyvalue-1.2.10.RELEASE.jar jedis-2.9.0.jar joda-
+ time-2.9.9.jar spring-boot-starter-activemq-1.5.10.RELEASE.jar logback-
+ core-1.1.11.jar activemq-client-5.14.5.jar tomcat-embed-core-8.5.27.jar
+  spring-boot-starter-logging-1.5.10.RELEASE.jar alibaba-dingtalk-servic
+ e-sdk-1.0.1.jar
+

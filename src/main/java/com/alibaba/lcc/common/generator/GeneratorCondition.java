@@ -4,7 +4,10 @@ import lombok.Data;
 /**
 * author: 夕阳
 * date: 2020/10/14
-* Description:
+* Description: 自动生成实体类配置项
+ *  需要注意的字段 数据url 要和现有的 mysql驱动版本相符合
+ *  modelName ： 多模块的情况写模块名称 当前模块 ./
+ *
 */
 @Data
 public class GeneratorCondition {

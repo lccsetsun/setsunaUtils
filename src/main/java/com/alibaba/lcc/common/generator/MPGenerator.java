@@ -234,9 +234,9 @@ public class MPGenerator {
     public static void main(String[] args) {
         GeneratorCondition generatorCondition = new GeneratorCondition();
         generatorCondition.setAuthor("lccsetsun");
-        generatorCondition.setUrl("jdbc:mysql://129.204.69.51:3306/event_center_project_manager?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true");
+        generatorCondition.setUrl("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true");
         generatorCondition.setUsername("root");
-        generatorCondition.setPassword("hY434513");
+        generatorCondition.setPassword("lccsetsun.github.io");
         generatorCondition.setParentPackage("com.alibaba.lcc.c");
         generatorCondition.setTablePre(new String[]{"tb"});
         generatorCondition.setTableName(new String[]{"tb_form_metadata_info"});
